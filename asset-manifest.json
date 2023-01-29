@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Student-Attendence/static/css/main.e6c13ad2.css",
+    "main.js": "/Student-Attendence/static/js/main.545c9088.js",
+    "static/js/787.52453d29.chunk.js": "/Student-Attendence/static/js/787.52453d29.chunk.js",
+    "index.html": "/Student-Attendence/index.html",
+    "main.e6c13ad2.css.map": "/Student-Attendence/static/css/main.e6c13ad2.css.map",
+    "main.545c9088.js.map": "/Student-Attendence/static/js/main.545c9088.js.map",
+    "787.52453d29.chunk.js.map": "/Student-Attendence/static/js/787.52453d29.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.545c9088.js"
+  ]
+}
