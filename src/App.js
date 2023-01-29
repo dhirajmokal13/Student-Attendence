@@ -41,7 +41,7 @@ function App() {
   return (
     <div className="App container">
       <h2 className='text-center text-success mt-4 mb-3'>Student Attendence</h2>
-      <form onSubmit={handleSubmit} className='mx-auto mb-3' style={{ minWidth: '30vw' }}>
+      <form onSubmit={handleSubmit} className='mx-auto mb-3'>
         <input className='form-control my-2' title='Roll Number' type="number" placeholder={`Enter Roll Number More Than ${students.length}`} name="rn" value={students.length + 1} onChange={handleChange} disabled/>
         <input className='form-control my-2' type="text" placeholder='Enter Student Name' name="name" value={newStudent.name} onChange={handleChange} />
         <button className='btn btn-outline-primary mt-2 me-2' type="submit">Add Student</button>
