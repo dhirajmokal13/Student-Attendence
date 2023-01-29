@@ -25,8 +25,8 @@ function App() {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     if (newStudent.name.length > 2) {
-      event.preventDefault();
       if (newStudent.rn > students.length) {
         setStudents([...students, newStudent]);
         setNewStudent({ rn: newStudent.rn + 1, name: '' })
