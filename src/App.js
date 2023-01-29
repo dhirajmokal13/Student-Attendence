@@ -2,18 +2,10 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment/moment';
 
 function App() {
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState([{ rn: 1, name: 'Dhiraj Mokal' }, { rn: 2, name: 'Aniket Kolhe' },]);
   const [checkinTime, setCheckinTime] = useState({});
   const [checkoutTime, setCheckoutTime] = useState({});
-    const [newStudent, setNewStudent] = useState({ rn: '', name: '' });
-
-  useEffect(() => {
-    setStudents([
-      //Some Defaults Studens
-      { rn: 1, name: 'Dhiraj Mokal' },
-      { rn: 2, name: 'Aniket Kolhe' },
-    ]);
-  }, []);
+  const [newStudent, setNewStudent] = useState({ rn: students.length + 1, name: '' });
 
   const checkIn = (rn) => {
     const currentTime = new Date();
@@ -33,12 +25,16 @@ function App() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (newStudent.rn > students.length) {
-      setStudents([...students, newStudent]);
-      setNewStudent({ rn: '', name: '' })
+    if (newStudent.name.length > 2) {
+      event.preventDefault();
+      if (newStudent.rn > students.length) {
+        setStudents([...students, newStudent]);
+        setNewStudent({ rn: newStudent.rn + 1, name: '' })
+      } else {
+        alert(`Please Enter Roll No More Than ${students.length}`);
+      }
     } else {
-      alert(`Please Enter Roll No More Than ${students.length}`);
+      alert("Enter Valid Name")
     }
   };
 
@@ -46,14 +42,14 @@ function App() {
     <div className="App container">
       <h2 className='text-center text-success mt-4 mb-3'>Student Attendence</h2>
       <form onSubmit={handleSubmit} className='mx-auto mb-3' style={{ maxWidth: '30vw' }}>
-        <input className='form-control my-2' type="number" placeholder={`Enter Roll Number More Than ${students.length}`} name="rn" value={newStudent.rn} onChange={handleChange} />
+        <input className='form-control my-2' title='Roll Number' type="number" placeholder={`Enter Roll Number More Than ${students.length}`} name="rn" value={students.length + 1} onChange={handleChange} disabled/>
         <input className='form-control my-2' type="text" placeholder='Enter Student Name' name="name" value={newStudent.name} onChange={handleChange} />
         <button className='btn btn-outline-primary mt-2 me-2' type="submit">Add Student</button>
       </form>
 
       <h5 className='text-center'>Present Students: <span className='text-danger'>{Object.keys(checkinTime).length}</span></h5>
       {students.map((student) => (
-        <div className='card my-3 mx-auto' style={{ maxWidth: '100vh',boxShadow: '0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)' }} key={student.rn}>
+        <div className='card my-3 mx-auto' style={{ maxWidth: '100vh', boxShadow: '0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)' }} key={student.rn}>
           <div className='card-body'>
             <h4 className='card-title'>Name: <span className='text-success'>{student.name}</span></h4>
             <hr />
