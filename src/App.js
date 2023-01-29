@@ -53,7 +53,7 @@ function App() {
 
       <h5 className='text-center'>Present Students: <span className='text-danger'>{Object.keys(checkinTime).length}</span></h5>
       {students.map((student) => (
-        <div className='card my-3' style={{ boxShadow: '0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)' }} key={student.rn}>
+        <div className='card my-3 mx-auto' style={{ maxWidth: '100vh',boxShadow: '0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)' }} key={student.rn}>
           <div className='card-body'>
             <h4 className='card-title'>Name: <span className='text-success'>{student.name}</span></h4>
             <hr />
