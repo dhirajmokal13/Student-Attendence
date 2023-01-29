@@ -5,6 +5,7 @@ function App() {
   const [students, setStudents] = useState([]);
   const [checkinTime, setCheckinTime] = useState({});
   const [checkoutTime, setCheckoutTime] = useState({});
+    const [newStudent, setNewStudent] = useState({ rn: '', name: '' });
 
   useEffect(() => {
     setStudents([
@@ -24,8 +25,6 @@ function App() {
     setCheckoutTime({ ...checkoutTime, [rn]: currentTime });
   }
 
-  const [newStudent, setNewStudent] = useState({ rn: '', name: '' });
-
   const handleChange = (event) => {
     setNewStudent({
       ...newStudent,
@@ -34,9 +33,10 @@ function App() {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     if (newStudent.rn > students.length) {
-      event.preventDefault();
       setStudents([...students, newStudent]);
+      setNewStudent({ rn: '', name: '' })
     } else {
       alert(`Please Enter Roll No More Than ${students.length}`);
     }
@@ -48,7 +48,7 @@ function App() {
       <form onSubmit={handleSubmit} className='mx-auto mb-3' style={{ maxWidth: '30vw' }}>
         <input className='form-control my-2' type="number" placeholder={`Enter Roll Number More Than ${students.length}`} name="rn" value={newStudent.rn} onChange={handleChange} />
         <input className='form-control my-2' type="text" placeholder='Enter Student Name' name="name" value={newStudent.name} onChange={handleChange} />
-        <button className='btn btn-outline-primary mt-2 me-2' type="submit">Submit</button>
+        <button className='btn btn-outline-primary mt-2 me-2' type="submit">Add Student</button>
       </form>
 
       <h5 className='text-center'>Present Students: <span className='text-danger'>{Object.keys(checkinTime).length}</span></h5>
